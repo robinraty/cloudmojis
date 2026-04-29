@@ -1,0 +1,240 @@
+/* =========================
+RESET / BASE
+========================= */
+
+*, *::before, *::after {
+    box-sizing: border-box; /* inclut padding + border dans width/height */
+}
+
+html {
+    font-size: 100%; /* définit la taille de base du texte du site sur 100% = valeur par défaut du navigateur. Souvent 1rem (16px) */
+    -webkit-text-size-adjust: 100%; /* évite zoom automatique sur iOS */
+}
+
+body {
+    margin: 0; /* enlève marge par défaut du navigateur */
+    min-height: 100vh; /* hauteur minimale = écran entier */
+    line-height: 1.5; /* espace vertical entre les lignes de texte */
+    font-family: "Quicksand", sans-serif;
+    background-color: black;
+    user-select: none;
+}
+
+img, picture, video, canvas, svg {
+    display: block; /* enlève les espaces inline (surtout images) */
+    max-width: 100%; /* empêche de dépasser du parent */
+}
+
+input, button, textarea, select {
+    font: inherit; /* récupère font-family, size, etc du parent */
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    margin-top: 0; /* enlève les marges haut par défaut */
+    overflow-wrap: break-word; /* casse les mots trop longs */
+}
+
+a {
+    color: inherit; /* prend la couleur du parent */
+    text-decoration: none; /* enlève le soulignement */
+}
+
+ul, ol {
+    margin: 0; /* enlève marges par défaut */
+    padding: 0; /* enlève padding gauche */
+    list-style: none; /* enlève les puces / numéros */
+}
+
+/* =========================
+STYLES PAR DÉFAUT = MOBILE
+(< 640px)
+========================= */
+
+
+
+
+.game {
+    margin-inline: auto; /* centre horizontalement */
+    max-width: 1600px;
+    width: 100%;
+    height: 100vh;
+    position: relative; /* Pour que les elements puissent spawn DEDANS en absolute*/
+    background-image: url(/img/Sky-with-Clouds-Background-Pixel-Art5\ 1.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+
+.score {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    font-weight: 400;
+    font-size: 36px;
+    z-index: 10;
+    filter:
+    drop-shadow(0 0 6px #ff54cc)
+    drop-shadow(0 0 10px #FFE488)
+    drop-shadow(0 0 14px #7ad5ff);
+
+  }
+
+  .timer {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-weight: 400;
+    font-size: 36px;
+    z-index: 10;
+    filter:
+    drop-shadow(0 0 6px #ff54cc)
+    drop-shadow(0 0 10px #FFE488)
+    drop-shadow(0 0 14px #7ad5ff);
+
+  }
+
+  .starter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+    /* background-color: #8f4585; */
+    width: 400px;
+    /* border-radius: 999px;
+    padding: 50px; */
+  }
+
+  
+
+  .starter:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  @keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.05); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+  }
+  
+  .starter {
+    animation: pulse 2s infinite;
+  }
+
+
+.item {
+    position: absolute;
+    font-size: 55px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.diamond {
+    font-size: 100px !important;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
+
+}
+
+.emoji {
+    display: inline-block;
+    line-height: 1;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    filter: drop-shadow(0 0 6px #fd5dc8);
+}
+
+.item:hover .emoji {
+    transform: scale(1.3);
+    filter:
+        drop-shadow(0 0 6px #ff54cc)
+        drop-shadow(0 0 10px #FFE488)
+        drop-shadow(0 0 14px #7ad5ff);
+}
+
+
+.game.game-over {
+    animation: shake 0.3s;
+    background-color: rgb(72, 16, 126);
+  }
+  
+  @keyframes shake {
+    0% { transform: translate(0); }
+    25% { transform: translate(5px, -5px); }
+    50% { transform: translate(-5px, 5px); }
+    75% { transform: translate(5px, 5px); }
+    100% { transform: translate(0); }}
+
+    .game.game-over::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1;
+      }
+
+    .game.game-over::after {
+        content: "GAME OVER";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 80px;
+        color: white;
+        font-weight: bold;
+        z-index: 1;
+      }
+
+
+
+.game-end {
+    background-color: #fd5dc8;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+BREAKPOINTS STANDARDS
+========================= */
+
+/* ≥ 640px : grands téléphones */
+@media (min-width: 640px) { /* applique styles si écran ≥ 640px */
+    
+}
+
+/* ≥ 768px : tablettes */
+@media (min-width: 768px) { /* breakpoint tablette classique */
+    
+}
+
+/* ≥ 1024px : laptop */
+@media (min-width: 1024px) { /* passage layout desktop */
+    
+}
+
+/* ≥ 1280px : desktop large */
+@media (min-width: 1280px) { /* écrans larges */
+    
+}
+
+/* ≥ 1536px : très grands écrans */
+@media (min-width: 1536px) { /* ultra wide */
+    
+}
+
+
